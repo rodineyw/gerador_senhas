@@ -11,7 +11,7 @@ Para rodar este projeto, siga estes passos:
 1. Clone este repositório:
 
    ```
-   git clone URL_DO_REPOSITORIO
+   git clone https://github.com/rodineyw/gerador_senhas.git
    ```
 
 2. Instale as dependências:
@@ -36,4 +36,4 @@ Contribuições são sempre bem-vindas! Por favor, crie um fork do repositório 
 
 ## Licença
 
-Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+Distribuído sob a licença MIT. Veja [LICENSE](https://github.com/rodineyw/gerador_senhas/blob/main/LICENSE) para mais informações.
