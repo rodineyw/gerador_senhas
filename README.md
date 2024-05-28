@@ -1,5 +1,7 @@
 # Gerador de Senhas
 
+![Criação de Senha com Python](https://github.com/rodineyw/gerador_senhas/blob/main/assets/gerador_senha.png)
+
 ## Descrição
 
 Este projeto é um gerador de senhas que utiliza o nome completo e CPF do usuário para gerar uma senha segura. A aplicação é desenvolvida com PyQt6 e permite que o usuário escolha o comprimento da senha, com um mínimo de 6 caracteres.
@@ -11,7 +13,7 @@ Para rodar este projeto, siga estes passos:
 1. Clone este repositório:
 
    ```
-   git clone URL_DO_REPOSITORIO
+   git clone https://github.com/rodineyw/gerador_senhas.git
    ```
 
 2. Instale as dependências:
