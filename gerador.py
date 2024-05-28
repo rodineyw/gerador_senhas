@@ -7,6 +7,7 @@ from PyQt6.QtWidgets import (
     QWidget,
     QVBoxLayout,
     QLabel,
+    QSpinBox,
     QLineEdit,
     QPushButton,
     QMessageBox,
@@ -35,6 +36,13 @@ class GeradorDeSenha(QWidget):
         self.cpf_input.setPlaceholderText("Digite seu CPF")
         layout.addWidget(self.cpf_input)
 
+        # Spinner para seleção do número de caracteres
+        self.tamanho_senha = QSpinBox(self)
+        self.tamanho_senha.setMinimum(6)
+        self.tamanho_senha.setMaximum(32)
+        self.tamanho_senha.setValue(6)
+        layout.addWidget(self.tamanho_senha)
+
         # Botão para gerar senha
         self.botao_gerar = QPushButton("Gerar Senha", self)
         self.botao_gerar.clicked.connect(self.gerar_senha)
@@ -58,15 +66,16 @@ class GeradorDeSenha(QWidget):
         """Gera uma senha baseada no nome e o CPF do usuário."""
         nome = self.nome_input.text()
         cpf = self.cpf_input.text()
-        senha = self.criar_senha(nome, cpf)
+        tamanho = self.tamanho_senha.value()
+        senha = self.criar_senha(nome, cpf, tamanho)
         self.senha_gerada.setText(f"Sua senha é: {senha}")
 
-    def criar_senha(self, nome, cpf):
+    def criar_senha(self, nome, cpf, tamanho):
         """Gera uma senha baseada no nome e o CPF do usuário."""
         entrada = nome + cpf
         hash_obj = hashlib.sha256(entrada.encode())
         hash_hex = hash_obj.hexdigest()
-        senha = "".join(random.choices(hash_hex, k=6))
+        senha = "".join(random.choices(hash_hex, k=tamanho))
         return senha
 
     def copiar_senha(self):
