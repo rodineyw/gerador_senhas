@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este projeto é um gerador de senhas que utiliza o nome completo e CPF do usuário para gerar uma senha segura de 6 dígitos. A aplicação é desenvolvida com PyQt6 para uma interação amigável com o usuário.
+Este projeto é um gerador de senhas que utiliza o nome completo e CPF do usuário para gerar uma senha segura. A aplicação é desenvolvida com PyQt6 e permite que o usuário escolha o comprimento da senha, com um mínimo de 6 caracteres.
 
 ## Instalação
 
@@ -11,7 +11,7 @@ Para rodar este projeto, siga estes passos:
 1. Clone este repositório:
 
    ```
-   git clone https://github.com/rodineyw/gerador_senhas.git
+   git clone URL_DO_REPOSITORIO
    ```
 
 2. Instale as dependências:
@@ -23,12 +23,15 @@ Para rodar este projeto, siga estes passos:
 3. Execute o programa:
 
    ```
-   python gerador.py
+   python gerador_senha.py
    ```
 
 ## Uso
 
-Digite seu nome completo e CPF nos campos correspondentes e clique em "Gerar Senha". Use o botão "Copiar Senha" para copiar a senha gerada para a área de transferência.
+- Digite seu nome completo e CPF nos campos correspondentes.
+- Use o seletor para escolher quantos caracteres deseja que a senha tenha (mínimo de 6).
+- Clique em "Gerar Senha" para ver a senha gerada.
+- Use o botão "Copiar Senha" para copiar a senha gerada para a área de transferência.
 
 ## Contribuições
 
