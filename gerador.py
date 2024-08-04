@@ -1,7 +1,8 @@
-"""Módulos de importação"""
-
+# Importação de Módulos
 import hashlib
 import random
+from PyQt6.QtGui import QIcon
+from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtWidgets import (
     QApplication,
     QWidget,
@@ -12,7 +13,6 @@ from PyQt6.QtWidgets import (
     QPushButton,
     QMessageBox,
 )
-from PyQt6.QtGui import QGuiApplication
 
 
 class GeradorDeSenha(QWidget):
@@ -24,6 +24,8 @@ class GeradorDeSenha(QWidget):
 
     def init_ui(self):
         """Cria a interface da aplicação."""
+        self.setWindowIcon(QIcon('/assets/Password.ico'))
+
         # Layout vertical
         layout = QVBoxLayout()
 
@@ -39,7 +41,7 @@ class GeradorDeSenha(QWidget):
         # Spinner para seleção do número de caracteres
         self.tamanho_senha = QSpinBox(self)
         self.tamanho_senha.setMinimum(6)
-        self.tamanho_senha.setMaximum(32)
+        self.tamanho_senha.setMaximum(256)
         self.tamanho_senha.setValue(6)
         layout.addWidget(self.tamanho_senha)
 
@@ -50,6 +52,7 @@ class GeradorDeSenha(QWidget):
 
         # Label para mostrar a senha gerada
         self.senha_gerada = QLabel("Sua senha aparecerá aqui", self)
+        self.senha_gerada.setWordWrap(True)
         layout.addWidget(self.senha_gerada)
 
         # Botão para copiar a senha
@@ -63,26 +66,33 @@ class GeradorDeSenha(QWidget):
         self.setGeometry(300, 300, 300, 200)
 
     def gerar_senha(self):
-        """Gera uma senha baseada no nome e o CPF do usuário."""
+        """Gera uma senha baseada no nome e o CPF do usuário."""
         nome = self.nome_input.text()
         cpf = self.cpf_input.text()
         tamanho = self.tamanho_senha.value()
         senha = self.criar_senha(nome, cpf, tamanho)
-        self.senha_gerada.setText(f"Sua senha é: {senha}")
+        senha_formatada = self.formatar_senha(senha)
+        self.senha_gerada.setText(f"Sua senha é:\n{senha_formatada}")
 
     def criar_senha(self, nome, cpf, tamanho):
-        """Gera uma senha baseada no nome e o CPF do usuário."""
+        """Gera uma senha baseada no nome e o CPF do usuário."""
         entrada = nome + cpf
         hash_obj = hashlib.sha256(entrada.encode())
         hash_hex = hash_obj.hexdigest()
         senha = "".join(random.choices(hash_hex, k=tamanho))
         return senha
 
+    def formatar_senha(self, senha):
+        """Formata a senha para quebras de linha a cada 32 caracteres."""
+        return "\n".join(senha[i:i+32] for i in range(0, len(senha), 32))
+
     def copiar_senha(self):
-        """Copia a senha gerada para a ação de copiar para o clipboard."""
-        senha = self.senha_gerada.text().replace("Sua senha é: ", "")
+        """Copia a senha gerada para o clipboard."""
+        senha = self.senha_gerada.text().replace(
+            "Sua senha é:\n", "").replace("\n", "")
         QGuiApplication.clipboard().setText(senha)
-        QMessageBox.information(self, "Senha Copiada", "Senha copiada com sucesso.")
+        QMessageBox.information(self, "Senha Copiada",
+                                "Senha copiada com sucesso.")
 
 
 # Executa a aplicação
