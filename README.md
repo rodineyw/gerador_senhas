@@ -4,7 +4,12 @@
 
 ## Descrição
 
-Este projeto é um gerador de senhas que utiliza o nome completo e CPF do usuário para gerar uma senha segura. A aplicação é desenvolvida com PyQt6 e permite que o usuário escolha o comprimento da senha, com um mínimo de 6 caracteres.
+Aplicação de geração de senhas com PyQt6 focada em segurança e simplicidade.
+
+- Geração aleatória segura usando fonte criptográfica (`secrets`).
+- Opções de caracteres: A–Z, a–z, 0–9 e símbolos; filtro para evitar caracteres ambíguos (Il1O0, etc.).
+- Medidor de força com cálculo de entropia em bits.
+- Exibir/ocultar senha e copiar para a área de transferência.
 
 ## Instalação
 
@@ -25,15 +30,20 @@ Para rodar este projeto, siga estes passos:
 3. Execute o programa:
 
    ```
-   python gerador_senha.py
+   python gerador.py
    ```
 
 ## Uso
 
-- Digite seu nome completo e CPF nos campos correspondentes.
-- Use o seletor para escolher quantos caracteres deseja que a senha tenha (mínimo de 6).
-- Clique em "Gerar Senha" para ver a senha gerada.
-- Use o botão "Copiar Senha" para copiar a senha gerada para a área de transferência.
+- Escolha o tamanho da senha (recomendado: 12+). O mínimo agora é 8.
+- Selecione os conjuntos de caracteres (A–Z, a–z, 0–9, símbolos) conforme sua necessidade.
+- Ative “Evitar caracteres ambíguos” para remover caracteres como Il1O0.
+- Clique em “Gerar Senha” e use “Mostrar/Ocultar” para visualizar a senha.
+- Clique em “Copiar Senha” para enviar a senha gerada ao clipboard.
+
+### Segurança
+
+- Use comprimento maior e múltiplos conjuntos de caracteres para aumentar a entropia.
 
 ## Contribuições
 
