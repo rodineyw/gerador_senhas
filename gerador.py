@@ -4,9 +4,10 @@ import hashlib
 import secrets
 import string
 import math
-from PyQt6.QtGui import QIcon
-from PyQt6.QtGui import QGuiApplication
-from PyQt6.QtWidgets import (
+
+from PyQt6.QtGui import QIcon # pyright: ignore[reportMissingImports]
+from PyQt6.QtGui import QGuiApplication # pyright: ignore[reportMissingImports]
+from PyQt6.QtWidgets import ( # pyright: ignore[reportMissingImports]
     QApplication,
     QWidget,
     QVBoxLayout,
